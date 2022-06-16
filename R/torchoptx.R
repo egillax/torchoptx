@@ -11,7 +11,14 @@ optim_sgd <- torch::optimizer(
   },
   zero_grad = function() {
     optim_sgd_zero_grad(self$opt)
+  },
+  get_lr = function() {
+    optim_sgd_get_lr(self$opt)
+  },
+  set_lr = function(lr) {
+    optim_sgd_set_lr(self$opt, lr)
   }
+
 )
 
 #' @export

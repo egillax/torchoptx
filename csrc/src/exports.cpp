@@ -35,6 +35,20 @@ TORCHOPTX_API void _torchoptx_sgd_zero_grad (void* opt) {
   } TORCHOPTX_HANDLE_EXCEPTION
   
 }
+void torchoptx_sgd_set_lr (optim_sgd opt, double lr);
+TORCHOPTX_API void _torchoptx_sgd_set_lr (void* opt, double lr) {
+  try {
+     (torchoptx_sgd_set_lr(from_raw::SGD(opt), lr));
+  } TORCHOPTX_HANDLE_EXCEPTION
+  
+}
+double torchoptx_sgd_get_lr (optim_sgd opt);
+TORCHOPTX_API double _torchoptx_sgd_get_lr (void* opt) {
+  try {
+    return  (torchoptx_sgd_get_lr(from_raw::SGD(opt)));
+  } TORCHOPTX_HANDLE_EXCEPTION
+  return NULL;
+}
 optim_adam torchoptx_adam (torch::TensorList params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad);
 TORCHOPTX_API void* _torchoptx_adam (void* params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad) {
   try {

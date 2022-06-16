@@ -22,7 +22,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
 # space.
 set(TORCHOPTX_SRC src/torchoptx.cpp src/exports.cpp src/torchoptx_types.cpp)
 set(TORCHOPTX_HEADERS include/torchoptx/torchoptx.h include/torchoptx/exports.h)
-
 # On Windows we use module definition files to declare what are
 # the exported functions from the library. It's similar to the
 # Namespace file in the R ecossystem.
@@ -85,3 +84,6 @@ include(CPack)
 
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/../inst)
 install(TARGETS torchoptx LIBRARY PUBLIC_HEADER DESTINATION include/torchoptx)
+
+add_executable(main main.cpp)
+target_link_libraries(main torchoptx)

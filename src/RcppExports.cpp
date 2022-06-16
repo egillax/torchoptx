@@ -47,6 +47,28 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// rcpp_torchoptx_sgd_set_lr
+void rcpp_torchoptx_sgd_set_lr(torchoptx::optim_sgd opt, double lr);
+RcppExport SEXP _torchoptx_rcpp_torchoptx_sgd_set_lr(SEXP optSEXP, SEXP lrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< torchoptx::optim_sgd >::type opt(optSEXP);
+    Rcpp::traits::input_parameter< double >::type lr(lrSEXP);
+    rcpp_torchoptx_sgd_set_lr(opt, lr);
+    return R_NilValue;
+END_RCPP
+}
+// rcpp_torchoptx_sgd_get_lr
+double rcpp_torchoptx_sgd_get_lr(torchoptx::optim_sgd opt);
+RcppExport SEXP _torchoptx_rcpp_torchoptx_sgd_get_lr(SEXP optSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< torchoptx::optim_sgd >::type opt(optSEXP);
+    rcpp_result_gen = Rcpp::wrap(rcpp_torchoptx_sgd_get_lr(opt));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rcpp_torchoptx_adam
 torchoptx::optim_adam rcpp_torchoptx_adam(torch::TensorList params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad);
 RcppExport SEXP _torchoptx_rcpp_torchoptx_adam(SEXP paramsSEXP, SEXP lrSEXP, SEXP betas0SEXP, SEXP betas1SEXP, SEXP epsSEXP, SEXP weight_decaySEXP, SEXP amsgradSEXP) {
@@ -140,6 +162,28 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// optim_sgd_set_lr
+void optim_sgd_set_lr(torchoptx::optim_sgd opt, double lr);
+RcppExport SEXP _torchoptx_optim_sgd_set_lr(SEXP optSEXP, SEXP lrSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< torchoptx::optim_sgd >::type opt(optSEXP);
+    Rcpp::traits::input_parameter< double >::type lr(lrSEXP);
+    optim_sgd_set_lr(opt, lr);
+    return R_NilValue;
+END_RCPP
+}
+// optim_sgd_get_lr
+SEXP optim_sgd_get_lr(torchoptx::optim_sgd opt);
+RcppExport SEXP _torchoptx_optim_sgd_get_lr(SEXP optSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< torchoptx::optim_sgd >::type opt(optSEXP);
+    rcpp_result_gen = Rcpp::wrap(optim_sgd_get_lr(opt));
+    return rcpp_result_gen;
+END_RCPP
+}
 // optim_adam_new
 SEXP optim_adam_new(torch::TensorList params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad);
 RcppExport SEXP _torchoptx_optim_adam_new(SEXP paramsSEXP, SEXP lrSEXP, SEXP betas0SEXP, SEXP betas1SEXP, SEXP epsSEXP, SEXP weight_decaySEXP, SEXP amsgradSEXP) {
@@ -182,6 +226,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_torchoptx_rcpp_torchoptx_sgd", (DL_FUNC) &_torchoptx_rcpp_torchoptx_sgd, 6},
     {"_torchoptx_rcpp_torchoptx_sgd_step", (DL_FUNC) &_torchoptx_rcpp_torchoptx_sgd_step, 1},
     {"_torchoptx_rcpp_torchoptx_sgd_zero_grad", (DL_FUNC) &_torchoptx_rcpp_torchoptx_sgd_zero_grad, 1},
+    {"_torchoptx_rcpp_torchoptx_sgd_set_lr", (DL_FUNC) &_torchoptx_rcpp_torchoptx_sgd_set_lr, 2},
+    {"_torchoptx_rcpp_torchoptx_sgd_get_lr", (DL_FUNC) &_torchoptx_rcpp_torchoptx_sgd_get_lr, 1},
     {"_torchoptx_rcpp_torchoptx_adam", (DL_FUNC) &_torchoptx_rcpp_torchoptx_adam, 7},
     {"_torchoptx_rcpp_torchoptx_adam_step", (DL_FUNC) &_torchoptx_rcpp_torchoptx_adam_step, 1},
     {"_torchoptx_rcpp_torchoptx_adam_zero_grad", (DL_FUNC) &_torchoptx_rcpp_torchoptx_adam_zero_grad, 1},
@@ -190,6 +236,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_torchoptx_optim_sgd_new", (DL_FUNC) &_torchoptx_optim_sgd_new, 6},
     {"_torchoptx_optim_sgd_step", (DL_FUNC) &_torchoptx_optim_sgd_step, 1},
     {"_torchoptx_optim_sgd_zero_grad", (DL_FUNC) &_torchoptx_optim_sgd_zero_grad, 1},
+    {"_torchoptx_optim_sgd_set_lr", (DL_FUNC) &_torchoptx_optim_sgd_set_lr, 2},
+    {"_torchoptx_optim_sgd_get_lr", (DL_FUNC) &_torchoptx_optim_sgd_get_lr, 1},
     {"_torchoptx_optim_adam_new", (DL_FUNC) &_torchoptx_optim_adam_new, 7},
     {"_torchoptx_optim_adam_step", (DL_FUNC) &_torchoptx_optim_adam_step, 1},
     {"_torchoptx_optim_adam_zero_grad", (DL_FUNC) &_torchoptx_optim_adam_zero_grad, 1},

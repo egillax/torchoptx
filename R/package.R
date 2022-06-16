@@ -12,7 +12,7 @@ NULL
 
     if (!torchoptx_is_installed()) {
       if (interactive())
-        warning("libtorchoptx is not installed. Run `intall_torchoptx()` before using the package.")
+        warning("libtorchoptx is not installed. Run `install_torchoptx()` before using the package.")
     } else {
       dyn.load(lib_path(), local = FALSE)
 

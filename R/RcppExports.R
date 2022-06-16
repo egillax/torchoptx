@@ -13,6 +13,14 @@ rcpp_torchoptx_sgd_zero_grad <- function(opt) {
     invisible(.Call('_torchoptx_rcpp_torchoptx_sgd_zero_grad', PACKAGE = 'torchoptx', opt))
 }
 
+rcpp_torchoptx_sgd_set_lr <- function(opt, lr) {
+    invisible(.Call('_torchoptx_rcpp_torchoptx_sgd_set_lr', PACKAGE = 'torchoptx', opt, lr))
+}
+
+rcpp_torchoptx_sgd_get_lr <- function(opt) {
+    .Call('_torchoptx_rcpp_torchoptx_sgd_get_lr', PACKAGE = 'torchoptx', opt)
+}
+
 rcpp_torchoptx_adam <- function(params, lr, betas0, betas1, eps, weight_decay, amsgrad) {
     .Call('_torchoptx_rcpp_torchoptx_adam', PACKAGE = 'torchoptx', params, lr, betas0, betas1, eps, weight_decay, amsgrad)
 }
@@ -43,6 +51,14 @@ optim_sgd_step <- function(opt) {
 
 optim_sgd_zero_grad <- function(opt) {
     invisible(.Call('_torchoptx_optim_sgd_zero_grad', PACKAGE = 'torchoptx', opt))
+}
+
+optim_sgd_set_lr <- function(opt, lr) {
+    invisible(.Call('_torchoptx_optim_sgd_set_lr', PACKAGE = 'torchoptx', opt, lr))
+}
+
+optim_sgd_get_lr <- function(opt) {
+    .Call('_torchoptx_optim_sgd_get_lr', PACKAGE = 'torchoptx', opt)
 }
 
 optim_adam_new <- function(params, lr, betas0, betas1, eps, weight_decay, amsgrad) {
