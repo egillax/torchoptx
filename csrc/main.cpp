@@ -16,7 +16,7 @@ int main() {
     torch::TensorList param;
     param = torch::TensorList(torch::randn(10));
     
-    optim_sgd opt = rcpp_torchoptx_sgd(param, 0.01, 0.01, 0.01, 1e-3, 0);
+    optim_sgd opt = _torchoptx_sgd(param, 0.01, 0.01, 0.01, 1e-3, 0);
 
 
 
