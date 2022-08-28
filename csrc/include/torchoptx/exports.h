@@ -30,8 +30,6 @@ TORCHOPTX_API void torchoptx_last_error_clear();
 TORCHOPTX_API void* _torchoptx_sgd (void* params, double lr, double momentum, double dampening, double weight_decay, bool nesterov);
 TORCHOPTX_API void _torchoptx_sgd_step (void* opt);
 TORCHOPTX_API void _torchoptx_sgd_zero_grad (void* opt);
-TORCHOPTX_API void _torchoptx_sgd_set_lr (void* opt, double lr);
-TORCHOPTX_API double _torchoptx_sgd_get_lr (void* opt);
 TORCHOPTX_API void* _torchoptx_adam (void* params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad);
 TORCHOPTX_API void _torchoptx_adam_step (void* opt);
 TORCHOPTX_API void _torchoptx_adam_zero_grad (void* opt);
@@ -53,16 +51,6 @@ inline void torchoptx_sgd_zero_grad (void* opt) {
    _torchoptx_sgd_zero_grad(opt);
   host_exception_handler();
   
-}
-inline void torchoptx_sgd_set_lr (void* opt, double lr) {
-   _torchoptx_sgd_set_lr(opt, lr);
-  host_exception_handler();
-  
-}
-inline double torchoptx_sgd_get_lr (void* opt) {
-  auto ret =  _torchoptx_sgd_get_lr(opt);
-  host_exception_handler();
-  return ret;
 }
 inline void* torchoptx_adam (void* params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad) {
   auto ret =  _torchoptx_adam(params, lr, betas0, betas1, eps, weight_decay, amsgrad);

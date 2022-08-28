@@ -16,7 +16,7 @@ optim_sgd <- torch::optimizer(
 
 #' @export
 optim_adam <- torch::optimizer(
-  "optim_sgd",
+  "optim_adam",
   initialize = function(params, lr = 0.001, betas = c(0.9, 0.999), eps = 1e-08,
                         weight_decay = 0, amsgrad = FALSE) {
     self$opt <- optim_adam_new(params, lr, betas[1], betas[2], eps, weight_decay,

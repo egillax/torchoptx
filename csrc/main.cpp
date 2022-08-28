@@ -7,16 +7,25 @@
 #include <vector>
 #include "torchoptx/torchoptx.h"
 #include "torchoptx/torchoptx_types.h"
-#include "src/exports.h"
 
 int main() {
 
-    int i = 1;
+    torch::nn::Sequential model (
+            torch::nn::Linear(2,8),
+            torch::nn::Functional(torch::sigmoid),
+            torch::nn::Linear(8,1),
+            torch::nn::Functional(torch::sigmoid));
 
-    torch::TensorList param;
-    param = torch::TensorList(torch::randn(10));
-    
-    optim_sgd opt = _torchoptx_sgd(param, 0.01, 0.01, 0.01, 1e-3, 0);
+    int i = 1;
+    torch::optim::AdamOptions options(0.01);
+    torch::optim::Adam opt(model->parameters(), options);
+
+    auto& param_groups = opt.param_groups();
+    double old_lr = param_groups[0].options().get_lr();
+    param_groups[0].options().set_lr(1e-3);
+
+    double new_lr = param_groups[0].options().get_lr();
+    i = 2;
 
 
 

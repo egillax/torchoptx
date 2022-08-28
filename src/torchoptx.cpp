@@ -33,12 +33,6 @@ void optim_sgd_zero_grad (torchoptx::optim_sgd opt) {
 }
 
 // [[Rcpp::export]]
-void optim_sgd_set_lr (torchoptx::optim_sgd opt, double lr) {
-  return rcpp_torchoptx_sgd_set_lr(opt, lr);
-}
-
-
-// [[Rcpp::export]]
 SEXP optim_adam_new (torch::TensorList params, double lr, double betas0, double betas1,
                      double eps, double weight_decay, bool amsgrad) {
   return rcpp_torchoptx_adam(params, lr, betas0, betas1, eps, weight_decay, amsgrad);
@@ -53,3 +47,8 @@ void optim_adam_step (torchoptx::optim_adam opt) {
 void optim_adam_zero_grad (torchoptx::optim_adam opt) {
   return rcpp_torchoptx_adam_zero_grad(opt);
 }
+
+//// [[Rcpp::export]]
+//SEXP optim_param_group (torchoptx::optimizer opt) {
+//    return rcpp_torchoptx_optim_param_group(opt);
+//}

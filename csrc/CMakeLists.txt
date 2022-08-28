@@ -84,6 +84,3 @@ include(CPack)
 
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/../inst)
 install(TARGETS torchoptx LIBRARY PUBLIC_HEADER DESTINATION include/torchoptx)
-
-add_executable(main main.cpp)
-target_link_libraries(main torchoptx)
