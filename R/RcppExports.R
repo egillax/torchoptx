@@ -57,10 +57,6 @@ optim_sgd_set_lr <- function(opt, lr) {
     invisible(.Call('_torchoptx_optim_sgd_set_lr', PACKAGE = 'torchoptx', opt, lr))
 }
 
-optim_sgd_get_lr <- function(opt) {
-    .Call('_torchoptx_optim_sgd_get_lr', PACKAGE = 'torchoptx', opt)
-}
-
 optim_adam_new <- function(params, lr, betas0, betas1, eps, weight_decay, amsgrad) {
     .Call('_torchoptx_optim_adam_new', PACKAGE = 'torchoptx', params, lr, betas0, betas1, eps, weight_decay, amsgrad)
 }
