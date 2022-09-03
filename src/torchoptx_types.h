@@ -32,25 +32,36 @@ namespace torchoptx {
 
         void *get();
     };
-}
 
-//class optim_param_group {
-//  public:
-//    std::shared_ptr<void> ptr;
-//    optim_param_group (void* x);
-//    optim_param_group (std::shared_ptr<void> x) : ptr(x) {}
-//    optim_param_group (SEXP x);
-//    operator SEXP () const;
-//    void* get ();
-//};
+
+    class optim_param_group {
+    public:
+        std::shared_ptr<void> ptr;
+
+        optim_param_group(void *x);
+
+        optim_param_group(std::shared_ptr<void> x) : ptr(x) {}
+
+        optim_param_group(SEXP x);
+
+        operator SEXP() const;
+
+        void *get();
+    };
+
+//    class optimizer {
+//    public:
+//        std::shared_ptr<void> ptr;
 //
-//class optimizer {
-//  public:
-//    std::shared_ptr<void> ptr;
-//    optimizer (void* x);
-//    optimizer (std::shared_ptr<void> x) : ptr(x) {}
-//    optimizer (SEXP x);
-//    operator SEXP () const;
-//    void* get ();
-//};
+//        optimizer(void *x);
+//
+//        optimizer(std::shared_ptr<void> x) : ptr(x) {}
+//
+//        optimizer(SEXP x);
+//
+//        operator SEXP() const;
+//
+//        void *get();
+//    };
+}
 

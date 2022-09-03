@@ -28,10 +28,18 @@ void rcpp_torchoptx_adam_zero_grad (torchoptx::optim_adam opt) {
    torchoptx_adam_zero_grad(opt.get());
 }
 // [[Rcpp::export]]
+torchoptx::optim_param_group rcpp_torchoptx_optim_param_group (torchoptx::optim_adam opt) {
+  return  torchoptx_optim_param_group(opt.get());
+}
+// [[Rcpp::export]]
 void rcpp_delete_optim_sgd (void* x) {
    delete_optim_sgd(x);
 }
 // [[Rcpp::export]]
 void rcpp_delete_optim_adam (void* x) {
    delete_optim_adam(x);
+}
+// [[Rcpp::export]]
+void rcpp_delete_optim_param_group (void* x) {
+   delete_optim_param_group(x);
 }

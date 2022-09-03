@@ -5,6 +5,7 @@ optim_sgd <- torch::optimizer(
                         nesterov = FALSE) {
     self$opt <- optim_sgd_new(params, lr, momentum, dampening, weight_decay,
                               nesterov)
+    self$param_group <- optim_param_group(self$opt)
   },
   step = function() {
     optim_sgd_step(self$opt)
@@ -21,6 +22,7 @@ optim_adam <- torch::optimizer(
                         weight_decay = 0, amsgrad = FALSE) {
     self$opt <- optim_adam_new(params, lr, betas[1], betas[2], eps, weight_decay,
                                amsgrad)
+    self$param_group <- optim_param_group(self$opt)
   },
   step = function() {
     optim_adam_step(self$opt)

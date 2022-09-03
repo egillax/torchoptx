@@ -33,11 +33,10 @@ TORCHOPTX_API void _torchoptx_sgd_zero_grad (void* opt);
 TORCHOPTX_API void* _torchoptx_adam (void* params, double lr, double betas0, double betas1, double eps, double weight_decay, bool amsgrad);
 TORCHOPTX_API void _torchoptx_adam_step (void* opt);
 TORCHOPTX_API void _torchoptx_adam_zero_grad (void* opt);
-TORCHOPTX_API void* _torchoptx_adam_param_group (void* opt);
-TORCHOPTX_API double _torchoptx_get_lr (void* param_group);
+TORCHOPTX_API void* _torchoptx_optim_param_group (void* opt);
 TORCHOPTX_API void _delete_optim_sgd (void* x);
 TORCHOPTX_API void _delete_optim_adam (void* x);
-TORCHOPTX_API void _delete_param_group (void* x);
+TORCHOPTX_API void _delete_optim_param_group (void* x);
 
 #ifdef RCPP_VERSION
 inline void* torchoptx_sgd (void* params, double lr, double momentum, double dampening, double weight_decay, bool nesterov) {
@@ -70,13 +69,8 @@ inline void torchoptx_adam_zero_grad (void* opt) {
   host_exception_handler();
   
 }
-inline void* torchoptx_adam_param_group (void* opt) {
-  auto ret =  _torchoptx_adam_param_group(opt);
-  host_exception_handler();
-  return ret;
-}
-inline double torchoptx_get_lr (void* param_group) {
-  auto ret =  _torchoptx_get_lr(param_group);
+inline void* torchoptx_optim_param_group (void* opt) {
+  auto ret =  _torchoptx_optim_param_group(opt);
   host_exception_handler();
   return ret;
 }
@@ -90,8 +84,8 @@ inline void delete_optim_adam (void* x) {
   host_exception_handler();
   
 }
-inline void delete_param_group (void* x) {
-   _delete_param_group(x);
+inline void delete_optim_param_group (void* x) {
+   _delete_optim_param_group(x);
   host_exception_handler();
   
 }

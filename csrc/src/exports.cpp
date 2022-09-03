@@ -56,6 +56,13 @@ TORCHOPTX_API void _torchoptx_adam_zero_grad (void* opt) {
   } TORCHOPTX_HANDLE_EXCEPTION
   
 }
+optim_param_group torchoptx_optim_param_group (optim_adam opt);
+TORCHOPTX_API void* _torchoptx_optim_param_group (void* opt) {
+  try {
+    return  make_raw::OptimizerParamGroup(torchoptx_optim_param_group(from_raw::Adam(opt)));
+  } TORCHOPTX_HANDLE_EXCEPTION
+  return (void*) NULL;
+}
 void delete_optim_sgd (void* x);
 TORCHOPTX_API void _delete_optim_sgd (void* x) {
   try {
@@ -67,6 +74,13 @@ void delete_optim_adam (void* x);
 TORCHOPTX_API void _delete_optim_adam (void* x) {
   try {
      (delete_optim_adam(x));
+  } TORCHOPTX_HANDLE_EXCEPTION
+  
+}
+void delete_optim_param_group (void* x);
+TORCHOPTX_API void _delete_optim_param_group (void* x) {
+  try {
+     (delete_optim_param_group(x));
   } TORCHOPTX_HANDLE_EXCEPTION
   
 }

@@ -48,7 +48,7 @@ void optim_adam_zero_grad (torchoptx::optim_adam opt) {
   return rcpp_torchoptx_adam_zero_grad(opt);
 }
 
-//// [[Rcpp::export]]
-//SEXP optim_param_group (torchoptx::optimizer opt) {
-//    return rcpp_torchoptx_optim_param_group(opt);
-//}
+// [[Rcpp::export]]
+SEXP optim_param_group (torchoptx::optim_adam opt) {
+    return rcpp_torchoptx_optim_param_group(opt);
+}

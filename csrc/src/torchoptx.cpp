@@ -50,9 +50,9 @@ void torchoptx_adam_zero_grad(optim_adam opt) {
   opt->zero_grad();
 }
 
-//// [[torch::export(register_types=c("optim_param_group", "ParamGroup", "void*", "torchoptx::optim_param_group"))]]
-//optim_param_group torchoptx_optim_param_group(optimizer opt) {
-//    auto& param_groups = reinterpret_cast<optim_param_group&>(opt->param_groups());
-//    return param_groups;
-//}
-//
+// [[torch::export(register_types=c("optim_param_group", "OptimizerParamGroup", "void*", "torchoptx::optim_param_group"))]]
+optim_param_group torchoptx_optim_param_group(optim_adam opt) {
+    auto& param_groups = reinterpret_cast<optim_param_group&>(opt->param_groups());
+    return param_groups;
+}
+

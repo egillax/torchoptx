@@ -25,12 +25,20 @@ rcpp_torchoptx_adam_zero_grad <- function(opt) {
     invisible(.Call('_torchoptx_rcpp_torchoptx_adam_zero_grad', PACKAGE = 'torchoptx', opt))
 }
 
+rcpp_torchoptx_optim_param_group <- function(opt) {
+    .Call('_torchoptx_rcpp_torchoptx_optim_param_group', PACKAGE = 'torchoptx', opt)
+}
+
 rcpp_delete_optim_sgd <- function(x) {
     invisible(.Call('_torchoptx_rcpp_delete_optim_sgd', PACKAGE = 'torchoptx', x))
 }
 
 rcpp_delete_optim_adam <- function(x) {
     invisible(.Call('_torchoptx_rcpp_delete_optim_adam', PACKAGE = 'torchoptx', x))
+}
+
+rcpp_delete_optim_param_group <- function(x) {
+    invisible(.Call('_torchoptx_rcpp_delete_optim_param_group', PACKAGE = 'torchoptx', x))
 }
 
 optim_sgd_new <- function(params, lr, momentum, dampening, weight_decay, nesterov) {
@@ -55,5 +63,9 @@ optim_adam_step <- function(opt) {
 
 optim_adam_zero_grad <- function(opt) {
     invisible(.Call('_torchoptx_optim_adam_zero_grad', PACKAGE = 'torchoptx', opt))
+}
+
+optim_param_group <- function(opt) {
+    .Call('_torchoptx_optim_param_group', PACKAGE = 'torchoptx', opt)
 }
 
